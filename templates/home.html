@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="margin-top: 2rem">
+        <div class="row">
+            {% for exam in exams %}
+                <div class="col-md-6">
+                    <div class="card mb-4 shadow-sm"><!-- HERE -->
+                        <div class="card-body">
+                            <h5 class="card-title">{{ exam.name }}</h5>
+                            <p class="card-text">{{ exam.description }}</p>
+                            <p class="card-text">مدة الاختبار: {{ exam.duration }} دقيفة</p>
+                            <a href="#" class="btn btn-primary">start</a>
+                        </div>
+                    </div><!-- /.card -->
+                </div><!-- /.col-md-3 -->
+            {% endfor %}
+        </div><!-- /.row -->
+    </div>
+{% endblock %}
