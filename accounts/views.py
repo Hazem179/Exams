@@ -38,13 +38,6 @@ def register(request):
     }
     return render(request, 'accounts/register.html', context)
 
-@login_required(login_url='login')
-def home(request):
-    exams = Exam.objects.all()
-    return render(request, 'home.html', {'exams': exams})
-
-
-
 def login(request):
     if request.user.is_authenticated:
         messages.warning(request, 'You are already logged in!')
@@ -66,3 +59,7 @@ def logout(request):
     auth.logout(request)
     messages.info(request, 'You are logged out.')
     return redirect('login')
+
+
+
+

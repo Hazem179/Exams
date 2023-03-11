@@ -1,72 +1,81 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- Main Section Start -->
-<div class="main-section">
-    <div class="page-section nopadding cs-nomargin" style="margin-top: 0px;padding-top: 60px;padding-bottom: 60px;margin-bottom: 0px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                    <div class="user-dashboard loader-holder" style="width: 450px; min-height: auto;">
-                        <div class="user-holder">
-                    <h4 class="text-center" style="margin-bottom: 0;">SIGN IN</h4>
-                    <p class="text-center">Order food from your favorite restaurants.</p>
-                    <hr>
-                    <div id="restaurant-sets-holder">
-                        <form action="{% url 'login' %}" class="form-fields-set foodbakery-dev-restaurant-form" method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <ul class="register-add-restaurant-tab-container restaurant-information-tab-container">
-                                <li>
+    <div class="main-section">
+        <div class="page-section nopadding cs-nomargin row img-wrapper  "
+             style="margin-top: 0px;margin-bottom: 0px;">
+            <div class="container col-lg-6 col-12 ">
+                <div class="row d-flex align-items-center justify-content-center bg-white h-100 ">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+    <div class="user-dashboard loader-holder" style="width: 450px; min-height: auto;">
+        <div class="user-holder">
+            <h4 class="text-center" style="margin-bottom: 0;">SIGN IN</h4>
+            <p class="text-center">Order food from your favorite restaurants.</p>
+            <hr>
+            <div id="restaurant-sets-holder">
+                <form action="{% url 'login' %}" class="form-fields-set foodbakery-dev-restaurant-form" method="post"
+                      enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <ul class="register-add-restaurant-tab-container restaurant-information-tab-container">
+                        <li>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="row">
-                                                
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                            <div class="field-holder">
-                                                                <label>Username</label>
-                                                                <input type="text" name="username" placeholder="Enter your email address">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                            <div class="field-holder">
-                                                                <label>Password</label>
-                                                                <input type="password" name="password" placeholder="Enter your password">
-                                                            </div>
-                                                        </div>
-                                                    
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="row">
+
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="field-holder">
-                                                <div class="payment-holder">
-                                                    <input type="submit" value="Submit" id="btn-next-restaurant-information" class="bgcolor">
-{#                                                    <a href="{% url 'forgot_password' %}" class="float-right">Forgot password</a>#}
-                                                </div>
+                                                <label>Username</label>
+                                                <input type="text" name="username"
+                                                       placeholder="Enter your email address">
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <!-- Load message -->
-{#                                            {% include 'includes/alerts.html' %}#}
+                                            <div class="field-holder">
+                                                <label>Password</label>
+                                                <input type="password" name="password"
+                                                       placeholder="Enter your password">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="field-holder">
+                                        <div class="payment-holder">
+                                            <input type="submit" value="Submit" id="btn-next-restaurant-information"
+                                                   class="bgcolor">
+                                            {#                                                    <a href="{% url 'forgot_password' %}" class="float-right">Forgot password</a>#}
                                         </div>
                                     </div>
+                                </div>
+                            </div>
 
-                                </li>
-                            </ul>
-                        </form>
-                    </div>
-                </div>
-                    </div>
-                </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <!-- Load message -->
+                                    {#                                            {% include 'includes/alerts.html' %}#}
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </form>
             </div>
         </div>
     </div>
 </div>
-<!-- Main Section End -->
+                </div>
+            </div>
+            <img src="data:image/jpeg;base64,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"
+                 class="col-lg-6 col-12"/>
+
+        </div>
+    </div>
+
 {% endblock %}
+
+
