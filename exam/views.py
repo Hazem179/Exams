@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-
+from django.http import JsonResponse
 from exam.models import Exam
 
 
@@ -17,3 +17,15 @@ def exam_detail(request,pk):
     exam = Exam.objects.get(id=pk)
     return render(request, 'exams/detail.html', {'exam': exam})
 
+def exam_data(request,pk):
+    exam = Exam.objects.get(id=pk)
+    questions = []
+    for question in exam.get_questions():
+        answers = []
+        for answer in question.get_answers():
+            answers.append(answer.answer)
+        questions.append({str(question): answers})
+    return JsonResponse({
+        'data': questions,
+        'duration': exam.duration,
+    })

@@ -1,4 +1,5 @@
 from django.db import models
+import random
 from accounts.models import User
 # Create your models here.
 
@@ -14,11 +15,13 @@ class Exam(models.Model):
         return self.name
 
     def get_questions(self):
-        return self.question_set.all()[:self.number_of_questions]
+        questions = list(self.question_set.all())
+        random.shuffle(questions)
+        return questions
 
 
 class Question(models.Model):
-    exam = models.ForeignKey(Exam, on_delete=models.CASCADE, related_name='questions')
+    exam = models.ForeignKey(Exam, on_delete=models.CASCADE)
     question = models.TextField()
 
     def __str__(self):
@@ -28,7 +31,7 @@ class Question(models.Model):
 
 
 class Answer(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='qusetion')
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
     answer = models.CharField(max_length=50)
     is_correct = models.BooleanField(default=False)
 
