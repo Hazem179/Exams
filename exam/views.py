@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
-from django.http import JsonResponse
+from django.shortcuts import render, redirect,reverse
+from django.http import JsonResponse, HttpResponseRedirect
 from exam.models import Exam, Question, Answer, Result
 from django.shortcuts import get_object_or_404
 
@@ -69,9 +69,7 @@ def save_exam(request, pk):
 
         score_ = score * multiplier
         Result.objects.create(exam=exam, student=user, marks=score_)
-        print(score_)
-
-    return JsonResponse({'data': 'success'})
+    return HttpResponseRedirect(reverse('home'))
 
 
 def is_ajax(request):
