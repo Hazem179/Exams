@@ -29,3 +29,7 @@ def exam_data(request,pk):
         'data': questions,
         'duration': exam.duration,
     })
+
+def save_exam(request,pk):
+    print(request.POST)
+    return JsonResponse({'data': 'success'})
