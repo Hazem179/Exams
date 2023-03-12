@@ -22,21 +22,21 @@ class Exam(models.Model):
 
 class Question(models.Model):
     exam = models.ForeignKey(Exam, on_delete=models.CASCADE)
-    question = models.TextField()
+    text = models.TextField()
 
     def __str__(self):
-        return self.question
+        return self.text
     def get_answers(self):
         return self.answer_set.all()
 
 
 class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    answer = models.CharField(max_length=50)
+    text = models.CharField(max_length=50)
     is_correct = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.answer
+        return self.text
 class Result(models.Model):
     student = models.ForeignKey(User, on_delete=models.CASCADE)
     exam = models.ForeignKey(Exam, on_delete=models.CASCADE)

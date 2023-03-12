@@ -26,7 +26,7 @@ $.ajax({
                 `
                 answers.forEach(answer => {
                     examBox.innerHTML += `
-                        <div>
+                        <div >
                             <input type="radio" class="ans" id="${question}-${answer}" name="${question}" value="${answer}">
                             <label for="${question}">${answer}</label>
                         </div>
@@ -34,7 +34,7 @@ $.ajax({
                 })
             }
         });
-        // activateTimer(response.time)
+
 
     },
     error: function (error) {

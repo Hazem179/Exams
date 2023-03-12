@@ -1,7 +1,8 @@
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate,login,logout
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.contrib import messages,auth
-from accounts.forms import RegisterForm
+#from django.contrib import messages,auth
+from accounts.forms import RegisterForm, LoginForm
 from accounts.models import User
 from exam.models import Exam
 
@@ -11,7 +12,6 @@ from exam.models import Exam
 
 def register(request):
     if request.user.is_authenticated:
-        messages.warning(request, 'You are already logged in!')
         return redirect('home')
     elif request.method == 'POST':
         form = RegisterForm(request.POST)
@@ -26,7 +26,6 @@ def register(request):
                                             password=password)
             user.role = User.STUDENT
             user.save()
-            messages.success(request, 'Your account has been registered sucessfully!')
             return redirect('home')
         else:
             print('invalid form')
@@ -38,26 +37,22 @@ def register(request):
     }
     return render(request, 'accounts/register.html', context)
 
-def login(request):
+def login_user(request):
     if request.user.is_authenticated:
-        messages.warning(request, 'You are already logged in!')
         return redirect('home')
     elif request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        user = auth.authenticate(username=username, password=password)
+        user = authenticate(request,username=username, password=password)
         if user is not None:
-            auth.login(request, user)
-            messages.success(request, 'You are now logged in.')
+            login(request, user)
             return redirect('home')
         else:
-            messages.error(request, 'Invalid login credentials')
             return redirect('login')
     return render(request, 'accounts/login.html')
 
-def logout(request):
-    auth.logout(request)
-    messages.info(request, 'You are logged out.')
+def logout_user(request):
+    logout(request)
     return redirect('login')
 
 
